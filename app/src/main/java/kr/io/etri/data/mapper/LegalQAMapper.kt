@@ -33,13 +33,13 @@ fun Response<ResponseLegalQAModel>.asLegal() : Response<LegalQAModel> {
 
 fun ResponseReturnObject.asLegal() : ReturnObject {
     return ReturnObject(
-        legalInfo.asLegal()
+        legalInfo?.asLegal()
     )
 }
 
 fun ResponseLegalInfo.asLegal() : LegalInfo {
     return LegalInfo(
-        answerInfo.map { it.asLegal() },
+        answerInfo?.map { it.asLegal() },
         relatedQs
     )
 }

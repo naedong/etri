@@ -46,8 +46,8 @@ class MainViewModel @Inject constructor(
             botQAChat.runCatching {
                 this.value
             }.onSuccess {model ->
-                repeat(model.returnObject.legalInfo.answerInfo.size){ count ->
-                    _conversation.emit(_conversation.value + ChatUiModel.Message(botQAChat.value.returnObject.legalInfo.answerInfo[count].answer, ChatUiModel.Author.bot))
+                repeat(model.returnObject.legalInfo?.answerInfo?.size ?: 0){ count ->
+                    _conversation.emit(_conversation.value + ChatUiModel.Message(model.returnObject?.legalInfo?.answerInfo?.get(count)?.answer ?: "", ChatUiModel.Author.bot))
                 }
             }.onFailure {
                 _conversation.emit(_conversation.value + ChatUiModel.Message("죄송합니다." +
