@@ -14,27 +14,27 @@ data class ResponseLegalQAModel(
 @JsonClass(generateAdapter = true)
 data class ResponseReturnObject(
     @Json(name = "LegalInfo")
-    val legalInfo: ResponseLegalInfo
+    val legalInfo: ResponseLegalInfo?
 )
 
 @JsonClass(generateAdapter = true)
 data class ResponseLegalInfo(
     @Json(name = "AnswerInfo")
-    val answerInfo: List<ResponseAnswerInfo>,
+    val answerInfo: List<ResponseAnswerInfo>?,
     @Json(name = "RelatedQs")
-    val relatedQs: List<String>
+    val relatedQs: List<String>?
 )
 
 @JsonClass(generateAdapter = true)
 data class ResponseAnswerInfo(
     @Json(name = "answer")
-    val answer: String,
+    val answer: String?,
     @Json(name = "clause")
-    val clause: String,
+    val clause: String?,
     @Json(name = "confidence")
-    val confidence: Double,
+    val confidence: Double?,
     @Json(name = "rank")
-    val rank: Int,
+    val rank: Int?,
     @Json(name = "source")
-    val source: String
+    val source: String?
 )

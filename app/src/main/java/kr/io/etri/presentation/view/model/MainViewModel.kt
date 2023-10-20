@@ -1,23 +1,16 @@
 package kr.io.etri.presentation.view.model
 
 import android.util.Log
-import androidx.compose.runtime.collectAsState
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.delay
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.SharingStarted
 import kotlinx.coroutines.flow.StateFlow
-import kotlinx.coroutines.flow.collect
-import kotlinx.coroutines.flow.flow
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.stateIn
 import kotlinx.coroutines.launch
 import kr.io.etri.data.model.request.RequestLegalObject
-import kr.io.etri.domain.model.LegalQAModel
 import kr.io.etri.domain.usecase.LegalQAUseCase
 import javax.inject.Inject
 
@@ -46,8 +39,8 @@ class MainViewModel @Inject constructor(
             botQAChat.runCatching {
                 this.value
             }.onSuccess {model ->
-                repeat(model.returnObject.legalInfo.answerInfo.size){ count ->
-                    _conversation.emit(_conversation.value + ChatUiModel.Message(botQAChat.value.returnObject.legalInfo.answerInfo[count].answer, ChatUiModel.Author.bot))
+                repeat(model.returnObject.legalInfo?.answerInfo?.size ?: 0){ count ->
+                    _conversation.emit(sendQAMsg(ChatUiModel.Message(model.returnObject.legalInfo?.answerInfo?.get(count)?.answer ?: "", ChatUiModel.Author.bot)))
                 }
             }.onFailure {
                 _conversation.emit(_conversation.value + ChatUiModel.Message("죄송합니다." +
@@ -56,6 +49,18 @@ class MainViewModel @Inject constructor(
             }
         }
     }
+
+            private fun sendQAMsg(msg: ChatUiModel.Message) : List<ChatUiModel.Message> {
+                Log.e("WordChecking", "Word :  ${msg.text}")
+                if(msg.text == "" ){
+                    return  _conversation.value + ChatUiModel.Message("죄송합니다." +
+                            " 이해를 하지 못하였습니다." +
+                            " 다시 작성해 주시길 바랍니다.", ChatUiModel.Author.bot)
+                }
+                else {
+                    return _conversation.value + msg
+                }
+            }
 
 
 
