@@ -1,5 +1,6 @@
 package kr.io.etri.data.mapper
 
+import android.util.Log
 import kr.io.etri.data.model.response.ResponseAnswerInfo
 import kr.io.etri.data.model.response.ResponseLegalInfo
 import kr.io.etri.data.model.response.ResponseLegalQAModel
@@ -19,6 +20,8 @@ import retrofit2.Response
 
 fun Response<ResponseLegalQAModel>.asLegal() : Response<LegalQAModel> {
     return Response.success(body()?.let {
+
+
         LegalQAModel(
             it.result,
             it.returnObject.asLegal()
@@ -30,13 +33,13 @@ fun Response<ResponseLegalQAModel>.asLegal() : Response<LegalQAModel> {
 
 fun ResponseReturnObject.asLegal() : ReturnObject {
     return ReturnObject(
-        legalInfo?.asLegal()
+        legalInfo.asLegal()
     )
 }
 
 fun ResponseLegalInfo.asLegal() : LegalInfo {
     return LegalInfo(
-        answerInfo?.map { it.asLegal() },
+        answerInfo.map { it.asLegal() },
         relatedQs
     )
 }

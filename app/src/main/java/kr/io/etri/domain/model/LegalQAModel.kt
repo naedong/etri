@@ -1,5 +1,6 @@
 package kr.io.etri.domain.model
 
+import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 
 /**
@@ -14,18 +15,18 @@ data class LegalQAModel(
     val returnObject: ReturnObject
 )
 data class ReturnObject(
-    val legalInfo: LegalInfo?
+    val legalInfo: LegalInfo
 )
 
 data class LegalInfo(
-    val answerInfo: List<AnswerInfo>?,
-    val relatedQs: List<String>?
+    val answerInfo: List<AnswerInfo>,
+    val relatedQs: List<String>
 )
 
 data class AnswerInfo(
-    val answer: String?,
-    val clause: String?,
-    val confidence: Double?,
-    val rank: Int?,
-    val source: String?
+    val answer: String,
+    val clause: String,
+    val confidence: Double,
+    val rank: Int,
+    val source: String
 )
