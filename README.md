@@ -4,8 +4,11 @@ ETRI API 사용하여 만든 간단한 법률 QA 어플리케이션
 
 ![header](https://capsule-render.vercel.app/api?type=waving&color=gradient&customColorList=0,2,2,5&height=350&section=header&text=NaedongGithub&fontSize=90)
 
-![notion](https://ringed-aster-57d.notion.site/Study-f9e360a866b94de5aa90d26761f8940d)
 
+
+![notion](https://www.notion.so/ECRT-a396b2e1e4f7430da34f34b4236b4f39)
+
+![figma](https://www.figma.com/file/0EdAw3XsiOOTreAssGzNq6/Untitled?type=design&node-id=0%3A1&mode=design&t=WEUD2zG6g4AmoDjG-1)
 
 
 <div align="center">
