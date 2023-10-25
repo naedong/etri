@@ -6,9 +6,11 @@ ETRI API 사용하여 만든 간단한 법률 QA 어플리케이션
 
 
 
-![notion](https://www.notion.so/ECRT-a396b2e1e4f7430da34f34b4236b4f39)
+[![notion](https://www.notion.so/ECRT-a396b2e1e4f7430da34f34b4236b4f39)
+](https://www.notion.so/ECRT-a396b2e1e4f7430da34f34b4236b4f39)
 
-![figma](https://www.figma.com/file/0EdAw3XsiOOTreAssGzNq6/Untitled?type=design&node-id=0%3A1&mode=design&t=WEUD2zG6g4AmoDjG-1)
+
+[![figma](https://www.figma.com/file/0EdAw3XsiOOTreAssGzNq6/Untitled?type=design&node-id=0%3A1&mode=design&t=WEUD2zG6g4AmoDjG-1)](https://www.figma.com/file/0EdAw3XsiOOTreAssGzNq6/Untitled?type=design&node-id=3-77&mode=design&t=WEUD2zG6g4AmoDjG-4)
 
 
 <div align="center">
