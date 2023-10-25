@@ -1,10 +1,13 @@
 package kr.io.etri.data.mapper
 
 import android.util.Log
+import kr.io.etri.common.exception.ResponseCall
+import kr.io.etri.common.exception.Result
 import kr.io.etri.data.model.response.ResponseAnswerInfo
 import kr.io.etri.data.model.response.ResponseLegalInfo
 import kr.io.etri.data.model.response.ResponseLegalQAModel
 import kr.io.etri.data.model.response.ResponseReturnObject
+import kr.io.etri.data.repositoryimpl.getEmit
 import kr.io.etri.domain.model.AnswerInfo
 import kr.io.etri.domain.model.LegalInfo
 import kr.io.etri.domain.model.LegalQAModel
@@ -18,16 +21,16 @@ import retrofit2.Response
  * Time: 오후 1:36
  */
 
-fun Response<ResponseLegalQAModel>.asLegal() : Response<LegalQAModel> {
-    return Response.success(body()?.let {
 
-
-        LegalQAModel(
-            it.result,
-            it.returnObject.asLegal()
-        )
-    })
+fun Result<ResponseLegalQAModel>.asLegal(response: Result<ResponseLegalQAModel>) : LegalQAModel {
+    return when(response) {
+        is Result.Success -> LegalQAModel( returnObject = response.data.returnObject.asLegal(),
+            result = response.data.result)
+        is Result.ApiError -> getEmit()
+        else -> getEmit()
+    }
 }
+
 
 
 

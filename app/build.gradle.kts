@@ -162,6 +162,10 @@ dependencies {
     // kotlin - serialization
     implementation(libs.kotlin.serialization)
 
+    // permission
+    implementation(libs.accompanist.permissions)
 
 
+    // rxjava
+    implementation(libs.rxjava)
 }

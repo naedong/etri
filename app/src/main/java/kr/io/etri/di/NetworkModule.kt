@@ -6,6 +6,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import kr.io.etri.BuildConfig
+import kr.io.etri.common.exception.ResponseAdapterFactory
 import kr.io.etri.data.api.ApiService
 import okhttp3.Call
 import okhttp3.Dispatcher
@@ -143,25 +144,6 @@ object NetworkModule {
      *  @annotation @Provides
      *  @explanation 종속 항목을 정의하기 위한 annotation
      *
-     *  @fun provideRetrofit
-     *  @explanation Retrofit 설정하기 위한 함수
-     *
-     *  @param okHttpClient: OkHttpClient
-     *  @explanation OkHttpClient 인스턴스를 호출
-     *
-     *  @return Retrofit
-     *
-     */
-
-    /**
-     *  @author Naedong
-     *
-     *  @annotation @Singleton
-     *  @explanation Injector를 통해 단 한번 인스턴스화 시키기 위함
-     *
-     *  @annotation @Provides
-     *  @explanation 종속 항목을 정의하기 위한 annotation
-     *
      *  @fun provideApiService
      *  @explanation retrofitClient로 설정된 값을 가져와 retrofitClient 생성 ApiService
      *
@@ -184,6 +166,7 @@ object NetworkModule {
         return Retrofit.Builder()
             .client(okHttpClient)
             .baseUrl(BuildConfig.BASE_URL)
+            .addCallAdapterFactory(ResponseAdapterFactory())
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
     }

@@ -1,6 +1,7 @@
 package kr.io.etri.data.api
 
 import kr.io.etri.BuildConfig
+import kr.io.etri.common.exception.Result
 import kr.io.etri.data.model.request.RequestLegalObject
 import kr.io.etri.data.model.request.RequestLegalQAModel
 import kr.io.etri.data.model.response.ResponseLegalQAModel
@@ -24,5 +25,11 @@ interface ApiService {
     @POST("/LegalQA")
     suspend fun getLegalQa(
         @Body requset : RequestLegalQAModel
-    ) : Response<ResponseLegalQAModel>
+    ) : Result<ResponseLegalQAModel>
+
+
+    @POST("/Audio")
+    suspend fun getAudio(
+        @Body requset : RequestLegalQAModel
+    ) : Result<ResponseLegalQAModel>
 }

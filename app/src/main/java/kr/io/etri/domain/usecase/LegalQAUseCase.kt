@@ -2,8 +2,11 @@ package kr.io.etri.domain.usecase
 
 import android.util.Log
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 import kr.io.etri.data.model.request.RequestLegalObject
+import kr.io.etri.data.repositoryimpl.getEmit
 import kr.io.etri.domain.model.LegalQAModel
 import kr.io.etri.domain.repository.LegalQARepository
 import javax.inject.Inject
@@ -18,9 +21,10 @@ class LegalQAUseCase @Inject constructor(
     val repository : LegalQARepository
 ) {
 
-    fun getLegalQAUseCase(request : RequestLegalObject) : Flow<LegalQAModel> {
+    fun getLegalQAUseCase(request: RequestLegalObject): Flow<LegalQAModel> =  repository.invoke(request)
 
-        return repository.invoke(request)
-    }
+
+
+
 
 }
